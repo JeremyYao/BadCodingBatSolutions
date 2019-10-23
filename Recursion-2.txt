@@ -1,0 +1,34 @@
+//This is a collection of my [Jeremy Yao] solutions to CodingBat's Recursion-2 Problems.
+public boolean groupSum(int start, int[] nums, int target) {
+  if (start >= nums.length)
+  {
+    return target == 0;
+  }
+  else if (start == nums.length -1)
+  {
+    return nums[start] == target; 
+  }
+  else
+  {
+    return groupSum(start + 1, nums, target - nums[start]) ||  groupSum(start + 1, nums, target);
+  }
+}
+
+public boolean groupSum6(int start, int[] nums, int target) {
+  if (target == 0 && start == nums.length)
+  {
+    return true;
+  }
+  else if (target < 0 || start >= nums.length)
+  {
+    return false;
+  }
+  else if (nums[start] == 6)
+  {
+    return groupSum6(start + 1, nums, target - 6);
+  }
+  else
+  {
+    return groupSum6(start + 1, nums, target - nums[start]) ||  groupSum6(start + 1, nums, target);
+  }
+}
